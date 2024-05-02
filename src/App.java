@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         int result; // 결과 변수 선언
+        int[] resultArray = new int[10];
+        int index = 0;
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -19,14 +21,20 @@ public class App {
                 case '+':
                     result = first + second;
                     System.out.println("결과 : " + result);
+                    resultArray[index] = result; // 결과를 배열에 저장
+                    index++; // 인덱스 증가
                     break;
                 case '-':
                     result = first - second;
                     System.out.println("결과 : " + result);
+                    resultArray[index] = result;
+                    index++;
                     break;
                 case '*':
                     result = first * second;
                     System.out.println("결과 : " + result);
+                    resultArray[index] = result;
+                    index++;
                     break;
                 case '/':
                     if (second == 0) {
@@ -35,6 +43,8 @@ public class App {
                     }
                     result = first / second;
                     System.out.println("결과 : " + result);
+                    resultArray[index] = result;
+                    index++;
                     break;
                 default:
                     System.out.println("올바른 연산기호를 입력해주세요");
@@ -45,6 +55,9 @@ public class App {
 
             if (more.equals("exit")) {
                 System.out.println("계산을 종료합니다.");
+                for (int j : resultArray) {
+                    System.out.println(j); // 배열 출력
+                }
                 break;
             }
         }
