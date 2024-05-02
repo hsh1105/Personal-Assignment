@@ -6,6 +6,9 @@ public class App {
         System.out.print("첫 번째 숫자를 입력하세요: ");
         int first = sc.nextInt(); // 첫번째 번호 입력
 
+        System.out.print("사칙연산 기호를 입력하세요: ");
+        char symbol = sc.next().charAt(0); // 사칙연산 입력
+
         System.out.print("두 번째 숫자를 입력하세요: ");
         int second = sc.nextInt(); // 두번째 번호 입력
     }
