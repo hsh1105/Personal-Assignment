@@ -2,10 +2,9 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        int result; // 결과 변수 선언
-        int[] resultArray = new int[10];
-        int index = 0;
+        int[] resultArray = new int[10]; // 결과를 저장할 배열 선언
         Scanner sc = new Scanner(System.in);
+        int index = 0; // 배열 인덱스 변수 초기화
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -17,24 +16,47 @@ public class App {
             System.out.print("두 번째 숫자를 입력하세요: ");
             int second = sc.nextInt(); // 두번째 번호 입력
 
+            int result;
+
             switch (symbol) {
                 case '+':
                     result = first + second;
                     System.out.println("결과 : " + result);
-                    resultArray[index] = result; // 결과를 배열에 저장
-                    index++; // 인덱스 증가
+                    if (index == 10) {
+                        for (int i = 0; i < 9; i++) {
+                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
+                        }
+                        resultArray[9] = result; // 가장 최근 결과 저장
+                    } else {
+                        resultArray[index] = result; // 결과값을 배열에 저장
+                        index++; // 인덱스 증가
+                    }
                     break;
                 case '-':
                     result = first - second;
                     System.out.println("결과 : " + result);
-                    resultArray[index] = result;
-                    index++;
+                    if (index == 10) {
+                        for (int i = 0; i < 9; i++) {
+                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
+                        }
+                        resultArray[9] = result; // 가장 최근 결과 저장
+                    } else {
+                        resultArray[index] = result;
+                        index++;
+                    }
                     break;
                 case '*':
                     result = first * second;
                     System.out.println("결과 : " + result);
-                    resultArray[index] = result;
-                    index++;
+                    if (index == 10) {
+                        for (int i = 0; i < 9; i++) {
+                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
+                        }
+                        resultArray[9] = result; // 가장 최근 결과 저장
+                    } else {
+                        resultArray[index] = result;
+                        index++;
+                    }
                     break;
                 case '/':
                     if (second == 0) {
@@ -43,8 +65,15 @@ public class App {
                     }
                     result = first / second;
                     System.out.println("결과 : " + result);
-                    resultArray[index] = result;
-                    index++;
+                    if (index == 10) {
+                        for (int i = 0; i < 9; i++) {
+                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
+                        }
+                        resultArray[9] = result; // 가장 최근 결과 저장
+                    } else {
+                        resultArray[index] = result;
+                        index++;
+                    }
                     break;
                 default:
                     System.out.println("올바른 연산기호를 입력해주세요");
