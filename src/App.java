@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        int result = 0; // 정답 변수 선언
+        int result; // 정답 변수 선언
         Scanner sc = new Scanner(System.in);
 
         System.out.print("첫 번째 숫자를 입력하세요: ");
