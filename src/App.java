@@ -49,17 +49,17 @@ public class App {
 
             System.out.println("더 계산하시겠습니까? (y/n)");
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
             String more = sc.next();
 
             if (more.equals("n")) {
                 System.out.println("계산을 종료합니다.");
-                for (int j : resultArray) {
-                    System.out.println(j); // ArrayList 출력
-                }
                 break;
             } else if (more.equals("remove")) {
-                if (!resultArray.isEmpty()) {
-                    System.out.println("가장 먼저 저장된 결과가 삭제되었습니다: " + resultArray.remove(0));
+                System.out.println("가장 먼저 저장된 결과가 삭제되었습니다: " + resultArray.remove(0));
+            } else if (more.equals("inquiry")) {
+                for (int j : resultArray) {
+                    System.out.println(j); // ArrayList 출력
                 }
             }
         }
