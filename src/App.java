@@ -1,10 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        int[] resultArray = new int[10]; // 결과를 저장할 배열 선언
+        ArrayList<Integer> resultArray = new ArrayList<>(); // 결과를 저장할 ArrayList 선언
         Scanner sc = new Scanner(System.in);
-        int index = 0; // 배열 인덱스 변수 초기화
 
         while (true) {
             System.out.print("첫 번째 숫자를 입력하세요: ");
@@ -22,41 +22,17 @@ public class App {
                 case '+':
                     result = first + second;
                     System.out.println("결과 : " + result);
-                    if (index == 10) {
-                        for (int i = 0; i < 9; i++) {
-                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
-                        }
-                        resultArray[9] = result; // 가장 최근 결과 저장
-                    } else {
-                        resultArray[index] = result; // 결과값을 배열에 저장
-                        index++; // 인덱스 증가
-                    }
+                    resultArray.add(result); // 결과값을 ArrayList에 추가
                     break;
                 case '-':
                     result = first - second;
                     System.out.println("결과 : " + result);
-                    if (index == 10) {
-                        for (int i = 0; i < 9; i++) {
-                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
-                        }
-                        resultArray[9] = result; // 가장 최근 결과 저장
-                    } else {
-                        resultArray[index] = result;
-                        index++;
-                    }
+                    resultArray.add(result);
                     break;
                 case '*':
                     result = first * second;
                     System.out.println("결과 : " + result);
-                    if (index == 10) {
-                        for (int i = 0; i < 9; i++) {
-                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
-                        }
-                        resultArray[9] = result; // 가장 최근 결과 저장
-                    } else {
-                        resultArray[index] = result;
-                        index++;
-                    }
+                    resultArray.add(result);
                     break;
                 case '/':
                     if (second == 0) {
@@ -65,29 +41,26 @@ public class App {
                     }
                     result = first / second;
                     System.out.println("결과 : " + result);
-                    if (index == 10) {
-                        for (int i = 0; i < 9; i++) {
-                            resultArray[i] = resultArray[i + 1]; // 배열의 모든 요소를 한 칸씩 앞으로 이동
-                        }
-                        resultArray[9] = result; // 가장 최근 결과 저장
-                    } else {
-                        resultArray[index] = result;
-                        index++;
-                    }
+                    resultArray.add(result);
                     break;
                 default:
                     System.out.println("올바른 연산기호를 입력해주세요");
             }
 
-            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+            System.out.println("더 계산하시겠습니까? (y/n)");
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
             String more = sc.next();
 
-            if (more.equals("exit")) {
+            if (more.equals("n")) {
                 System.out.println("계산을 종료합니다.");
                 for (int j : resultArray) {
-                    System.out.println(j); // 배열 출력
+                    System.out.println(j); // ArrayList 출력
                 }
                 break;
+            } else if (more.equals("remove")) {
+                if (!resultArray.isEmpty()) {
+                    System.out.println("가장 먼저 저장된 결과가 삭제되었습니다: " + resultArray.remove(0));
+                }
             }
         }
     }
